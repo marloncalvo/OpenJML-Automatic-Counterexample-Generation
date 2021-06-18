@@ -1,0 +1,26 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.slf4j:slf4j-api:1.7.25'
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.12.0'
+    implementation group: 'commons-io', name: 'commons-io', version: '2.10.0'
+    implementation files('lib/openjml.jar', 'lib/jmlspecs.jar', 'lib/jmlruntime.jar')
+
+    testImplementation 'junit:junit:4.12'
+}
+
+
+application {
+    mainClassName = 'openjml.Main'
+}
+
+compileJava  {
+    options.compilerArgs << "-XDignore.symbol.file"
+}
